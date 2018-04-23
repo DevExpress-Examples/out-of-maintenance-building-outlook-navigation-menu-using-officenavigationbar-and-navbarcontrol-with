@@ -1,0 +1,78 @@
+﻿<dx:DXWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+        xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" 
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:NavBarExample"
+        x:Class="NavBarExample.MainWindow"
+        dx:ThemeManager.ThemeName="Office2013"
+        Icon="{dx:DXImage Image=Mail_16x16.png}"
+        Title="NavBar Example" Height="500" Width="700">
+    <Window.Resources>
+        <DataTemplate x:Key="calendarPeekFormTemplate">
+            <dxwui:Flyout ShowIndicator="True">
+                <dxe:DateNavigator/>
+            </dxwui:Flyout>
+        </DataTemplate>
+
+        <DataTemplate x:Key="peoplePeekFormTemplate">
+            <dxwui:Flyout ShowIndicator="True">
+                <StackPanel Width="250" Height="300" Margin="10,20,10,0">
+                    <dxe:TextEdit NullText="Search field"/>
+                    <TextBlock Text="FAVORITES" Margin="0,5,0,0"/>
+                </StackPanel>
+            </dxwui:Flyout>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <dxn:NavBarControl Compact="False" Width="200" Name="navBar">
+                <dxn:NavBarGroup Header="Mail" DisplaySource="Content" GroupScrollMode="None">
+                    <dxn:NavBarGroup.Content>
+                        <TreeView BorderThickness="0">
+                            <TreeViewItem Header="Inbox">
+                                <TreeViewItem Header="Work"/>
+                            </TreeViewItem>
+                            <TreeViewItem Header="Drafts"/>
+                            <TreeViewItem Header="Sent Items"/>
+                        </TreeView>
+                    </dxn:NavBarGroup.Content>
+                </dxn:NavBarGroup>
+                <dxn:NavBarGroup  Header="Calendar" DisplaySource="Content" PeekFormTemplate="{StaticResource calendarPeekFormTemplate}">
+                    <dxn:NavBarGroup.Content>
+                        <dxe:DateNavigator/>
+                    </dxn:NavBarGroup.Content>
+                </dxn:NavBarGroup>
+                <dxn:NavBarGroup  Header="People" DisplaySource="Content" PeekFormTemplate="{StaticResource peoplePeekFormTemplate}">
+                    <dxn:NavBarGroup.Content>
+                        <TreeView BorderThickness="0">
+                            <TreeViewItem Header="My Contacts">
+                                <TreeViewItem Header="Lync Contacts"/>
+                                <TreeViewItem Header="Contacts"/>
+                            </TreeViewItem>
+                        </TreeView>
+                    </dxn:NavBarGroup.Content>
+                </dxn:NavBarGroup>
+                <dxn:NavBarControl.View>
+                    <dxn:NavigationPaneView/>
+                </dxn:NavBarControl.View>
+            </dxn:NavBarControl>
+            <Border Background="LightBlue" Grid.Column="1"/>
+            <dxnav:OfficeNavigationBar Grid.Row="1" Grid.ColumnSpan="2" NavigationClient="{Binding ElementName=navBar}" ShowPeekFormOnItemHover="True"/>
+        </Grid>
+    </Grid>
+</dx:DXWindow>
