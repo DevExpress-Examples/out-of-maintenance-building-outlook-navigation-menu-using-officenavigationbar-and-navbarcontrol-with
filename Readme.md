@@ -1,3 +1,8 @@
+<!-- default file list -->
+*Files to look at*:
+
+* **[MainWindow.xaml](./CS/NavBarExample/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/NavBarExample/MainWindow.xaml))**
+<!-- default file list end -->
 # Building Outlook Navigation Menu Using OfficeNavigationBar and NavBarControl with TreeView
 
 
