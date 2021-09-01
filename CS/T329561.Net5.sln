@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavBarExample", "NavBarExample\NavBarExample.csproj", "{C90CA849-0663-487C-AA6C-CE6F69F94969}"
+# Visual Studio 16
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavBarExample", "NavBarExample\NavBarExample.Net5.csproj", "{C90CA849-0663-487C-AA6C-CE6F69F94969}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
